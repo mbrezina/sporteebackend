@@ -1,0 +1,34 @@
+USE Sporteezone;
+
+DROP table fitness;
+
+CREATE TABLE fitness
+     (
+     id INT PRIMARY KEY AUTO_INCREMENT,
+     name VARCHAR(50),
+     url VARCHAR(70),
+     street VARCHAR(30),
+     city VARCHAR(20),
+     postalcode INT(5),
+     multisport BOOLEAN,
+     activepass BOOLEAN,
+     payment VARCHAR(30),
+     sex VARCHAR(10),
+     mhd BOOLEAN
+     );
+
+
+INSERT INTO fitness (name, url, street, city, postalcode, multisport, activepass, payment, sex, mhd)
+VALUES ("Fitness centrum AFIT", "www.afit.cz", "Táborská 157", "Brno", 61500, 1, 1, "Benefit plus Edenred Sodexo", "muži/ženy", 1);
+
+INSERT INTO fitness (name, url, street, city, postalcode, multisport, activepass, payment, sex, mhd)
+VALUES ('Fitness Blue Gym', 'www.bluegym.cz', 'Kotlářská 51a', 'Brno', '60200', 1, 0, '', 'muži/ženy', 1);
+
+INSERT INTO fitness (name, url, street, city, postalcode, multisport, activepass, payment, sex, mhd)
+VALUES ('BFIT.CZ', 'www.bfit.cz', 'Veveří 455/8', 'Brno', '60200', NULL, NULL, NULL, 'muži/ženy', 1);
+
+INSERT INTO fitness (name, url, street, city, postalcode, multisport, activepass, payment, sex, mhd)
+VALUES  ('Myfit', 'www.myfit.cz', 'tř. Kapitána Jaroše 7b', 'Brno', 60200, 1, 0, 'Benefit plus Edenred Sodexo', 'muži/ženy', 1);
+
+INSERT INTO fitness (name, url, street, city, postalcode, multisport, activepass, payment, sex, mhd)
+VALUES  ('Weisser Sport Centrum', 'wwww.weissersportcentrum.cz', 'Tůmova 12', 'Brno', 61600, 1, 1, NULL, 'muži/ženy', 1);
