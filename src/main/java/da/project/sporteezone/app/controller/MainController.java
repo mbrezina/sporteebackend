@@ -35,20 +35,21 @@ public class MainController {
         return dataHolder;
     }
 
-    /*
-    podobné API jako to, kam se budou posílat cvičení
-    @PostMapping(path = "/pridejLekci", consumes = "application/json")      // Map ONLY POST Requests
+
+    //podobné API jako to, kam se budou posílat cvičení
+    @PostMapping(path = "/api/v1/pridejFitko", consumes = "application/json")      // Map ONLY POST Requests
     public @ResponseBody
-    String pridejNovouLekci(@RequestBody Lekce novaLekce) {
+    Fitness pridejNovouLekci(@RequestBody Fitness noveFitko) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
         System.out.println("jsem tady");
-        System.out.println(user);
-        fitnessRepository.save(novaLekce);
-        return "Saved";
+        System.out.println(noveFitko);
+
+        fitnessRepository.saveAndFlush(noveFitko);
+        return noveFitko;
     }
-     */
+
 
     @GetMapping(path = "/api/v1/greeting")
     public @ResponseBody
