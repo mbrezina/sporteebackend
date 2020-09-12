@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "fitness")
 public class Fitness {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,19 +48,19 @@ public class Fitness {
         this.mhd = mhd;
     }
 
-    public int getFit_id() {
+    public int getId() {
         return id;
     }
 
-    public String getFit_name() {
+    public String getName() {
         return name;
     }
 
-    public String getFit_street() {
+    public String getStreet() {
         return street;
     }
 
-    public String getFit_city() {
+    public String getCity() {
         return city;
     }
 
@@ -79,67 +80,67 @@ public class Fitness {
             '}';
     }
 
-    public void setFit_id(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setFit_name(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setFit_street(String street) {
+    public void setStreet(String street) {
         this.street = street;
     }
 
-    public void setFit_city(String city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public void setFit_postalcode(String postalcode) {
+    public void setPostalcode(String postalcode) {
         this.postalcode = postalcode;
     }
 
-    public void setFit_multisport(Boolean multisport) {
+    public void setMultisport(Boolean multisport) {
         this.multisport = multisport;
     }
 
-    public void setFit_activepass(Boolean activepass) {
+    public void setActivepass(Boolean activepass) {
         this.activepass = activepass;
     }
 
-    public void setFit_payment(String payment) {
+    public void setPayment(String payment) {
         this.payment = payment;
     }
 
-    public void setFit_sex(String sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
-    public void setFit_mhd(Boolean mhd) {
+    public void setMhd(Boolean mhd) {
         this.mhd = mhd;
     }
 
-    public String getFit_postalcode() {
+    public String getPostalcode() {
         return postalcode;
     }
 
-    public Boolean getFit_multisport() {
+    public Boolean getMultisport() {
         return multisport;
     }
 
-    public Boolean getFit_activepass() {
+    public Boolean getActivepass() {
         return activepass;
     }
 
-    public String getFit_payment() {
+    public String getPayment() {
         return payment;
     }
 
-    public String getFit_sex() {
+    public String getSex() {
         return sex;
     }
 
-    public Boolean getFit_mhd() {
+    public Boolean getMhd() {
         return mhd;
     }
 

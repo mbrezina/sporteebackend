@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -30,43 +31,42 @@ public class MainController {
     public ModelAndView showMessage() {
         ModelAndView dataHolder = new ModelAndView("index");
         dataHolder.addObject("msg", "hlásí se aplikace Sporteezone");
+        dataHolder.addObject("fitko", fitnessRepository.findByName("Myfit"));
         return dataHolder;
-
     }
 
     /*
     podobné API jako to, kam se budou posílat cvičení
-    @PostMapping(path = "/add", consumes = "application/json") // Map ONLY POST Requests
+    @PostMapping(path = "/pridejLekci", consumes = "application/json")      // Map ONLY POST Requests
     public @ResponseBody
-    String addNewUser(@RequestBody Fitness user) {
+    String pridejNovouLekci(@RequestBody Lekce novaLekce) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
         System.out.println("jsem tady");
         System.out.println(user);
-        fitnessRepository.save(user);
+        fitnessRepository.save(novaLekce);
         return "Saved";
     }
-
      */
 
-    @GetMapping(path = "/greeting")
+    @GetMapping(path = "/api/v1/greeting")
     public @ResponseBody
     String greet() {
         return "hello world";
     }
 
 
-    @PostMapping(path = "/findOne/{id}")
+    @PostMapping(path = "/api/v1/najdiJednoFitko/{id}")
     public @ResponseBody
-    Optional<Fitness> getOneUser(@PathVariable Integer id) {
+    Optional<Fitness> getJednoFitko(@PathVariable Integer id) {
         return fitnessRepository.findById(id);
     }
 
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/api/v1/vsechnaFitka")
     public @ResponseBody
-    Iterable<Fitness> getAllUsers() {
+    List<Fitness> getVsechnaFitka() {
         return fitnessRepository.findAll();
     }
 }
