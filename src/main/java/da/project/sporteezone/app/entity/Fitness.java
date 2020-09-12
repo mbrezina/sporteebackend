@@ -11,6 +11,7 @@ public class Fitness {
     private Integer id;
 
     private String name;
+    private String url;
     private String street;
     private String city;
     private String postalcode;
@@ -20,12 +21,37 @@ public class Fitness {
     private String sex;
     private Boolean mhd;
 
+
     public Fitness() {
     }
 
-    public Fitness(Integer id, String name, String street, String city, String postalcode, Boolean multisport, Boolean activepass, String payment, String sex, Boolean mhd) {
+
+    public Fitness(String name, String url, String street, String city, String postalcode, Boolean multisport, Boolean activepass, String payment, String sex, Boolean mhd) {
+        this.name = name;
+        this.street = street;
+        this.url = url;
+        this.city = city;
+        this.postalcode = postalcode;
+        this.multisport = multisport;
+        this.activepass = activepass;
+        this.payment = payment;
+        this.sex = sex;
+        this.mhd = mhd;
+    }
+
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Fitness(Integer id, String url, String name, String street, String city, String postalcode, Boolean multisport, Boolean activepass, String payment, String sex, Boolean mhd) {
         this.id = id;
         this.name = name;
+        this.url= url;
         this.street = street;
         this.city = city;
         this.postalcode = postalcode;
@@ -36,19 +62,7 @@ public class Fitness {
         this.mhd = mhd;
     }
 
-    public Fitness(String name, String street, String city, String postalcode, Boolean multisport, Boolean activepass, String payment, String sex, Boolean mhd) {
-        this.name = name;
-        this.street = street;
-        this.city = city;
-        this.postalcode = postalcode;
-        this.multisport = multisport;
-        this.activepass = activepass;
-        this.payment = payment;
-        this.sex = sex;
-        this.mhd = mhd;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -80,7 +94,7 @@ public class Fitness {
             '}';
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
