@@ -6,19 +6,36 @@ import java.io.Serializable;
 @Entity
 @Table(name = "fitness")
 public class Fitness {
+    @Override
+    public String toString() {
+        return "Fitness{" +
+            "id=" + id +
+            ", nazev='" + nazev + '\'' +
+            ", url='" + url + '\'' +
+            ", ulice='" + ulice + '\'' +
+            ", mesto='" + mesto + '\'' +
+            ", psc='" + psc + '\'' +
+            ", multisport=" + multisport +
+            ", activepass=" + activepass +
+            ", platba='" + platba + '\'' +
+            ", pohlavi='" + pohlavi + '\'' +
+            ", mhd=" + mhd +
+            '}';
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String name;
+    private String nazev;
     private String url;
-    private String street;
-    private String city;
-    private String postalcode;
+    private String ulice;
+    private String mesto;
+    private String psc;
     private Boolean multisport;
     private Boolean activepass;
-    private String payment;
-    private String sex;
+    private String platba;
+    private String pohlavi;
     private Boolean mhd;
 
 
@@ -26,16 +43,19 @@ public class Fitness {
     }
 
 
-    public Fitness(String name, String url, String street, String city, String postalcode, Boolean multisport, Boolean activepass, String payment, String sex, Boolean mhd) {
-        this.name = name;
-        this.street = street;
+    public Fitness(String nazev, String url, String ulice, String mesto, String psc, Boolean multisport, Boolean activepass, String platba, String pohlavi
+        , Boolean mhd) {
+        this.nazev = nazev;
+        this.ulice = ulice;
         this.url = url;
-        this.city = city;
-        this.postalcode = postalcode;
+        this.mesto = mesto;
+        this.psc = psc;
         this.multisport = multisport;
         this.activepass = activepass;
-        this.payment = payment;
-        this.sex = sex;
+        this.platba = Fitness.this.platba;
+        this.pohlavi
+            = pohlavi
+        ;
         this.mhd = mhd;
     }
 
@@ -48,70 +68,42 @@ public class Fitness {
         return url;
     }
 
-    public Fitness(Integer id, String url, String name, String street, String city, String postalcode, Boolean multisport, Boolean activepass, String payment, String sex, Boolean mhd) {
+    public Fitness(Integer id, String url, String nazev, String ulice, String mesto, String psc, Boolean multisport, Boolean activepass, String platba, String pohlavi
+        , Boolean mhd) {
         this.id = id;
-        this.name = name;
+        this.nazev = nazev;
         this.url= url;
-        this.street = street;
-        this.city = city;
-        this.postalcode = postalcode;
+        this.ulice = ulice;
+        this.mesto = mesto;
+        this.psc = psc;
         this.multisport = multisport;
         this.activepass = activepass;
-        this.payment = payment;
-        this.sex = sex;
+        this.platba = Fitness.this.platba;
+        this.pohlavi
+            = pohlavi
+        ;
         this.mhd = mhd;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    @Override
-    public String toString() {
-        return "Fitness{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", street='" + street + '\'' +
-            ", city='" + city + '\'' +
-            ", postalcode='" + postalcode + '\'' +
-            ", multisport=" + multisport +
-            ", activepass=" + activepass +
-            ", payment='" + payment + '\'' +
-            ", sex='" + sex + '\'' +
-            ", mhd=" + mhd +
-            '}';
-    }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNazev(String nazev) {
+        this.nazev = nazev;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setUlice(String ulice) {
+        this.ulice = ulice;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setMesto(String mesto) {
+        this.mesto = mesto;
     }
 
-    public void setPostalcode(String postalcode) {
-        this.postalcode = postalcode;
+    public void setPsc(String psc) {
+        this.psc = psc;
     }
 
     public void setMultisport(Boolean multisport) {
@@ -122,20 +114,36 @@ public class Fitness {
         this.activepass = activepass;
     }
 
-    public void setPayment(String payment) {
-        this.payment = payment;
+    public void setPlatba(String platba) {
+        this.platba = platba;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setPohlavi(String pohlavi) {
+        this.pohlavi = pohlavi;
     }
 
     public void setMhd(Boolean mhd) {
         this.mhd = mhd;
     }
 
-    public String getPostalcode() {
-        return postalcode;
+    public Integer getId() {
+        return id;
+    }
+
+    public String getNazev() {
+        return nazev;
+    }
+
+    public String getUlice() {
+        return ulice;
+    }
+
+    public String getMesto() {
+        return mesto;
+    }
+
+    public String getPsc() {
+        return psc;
     }
 
     public Boolean getMultisport() {
@@ -146,17 +154,15 @@ public class Fitness {
         return activepass;
     }
 
-    public String getPayment() {
-        return payment;
+    public String getPlatba() {
+        return platba;
     }
 
-    public String getSex() {
-        return sex;
+    public String getPohlavi() {
+        return pohlavi;
     }
 
     public Boolean getMhd() {
         return mhd;
     }
-
-
 }
