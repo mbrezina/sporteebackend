@@ -1,0 +1,40 @@
+login as root
+CREATE USER  'student'@'localhost'   IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO   'student'@'%'   IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO   'student'@'localhost'   IDENTIFIED BY 'password';
+
+mysql -u student -p
+
+
+CREATE DATABASE Sporteezone
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_czech_ci;
+
+USE Sporteezone;
+
+DROP table lekce;
+
+CREATE TABLE lekce
+     (id INT PRIMARY KEY AUTO_INCREMENT,
+     nazev VARCHAR(50),
+     datum DATE,
+     zacatek TIME,
+     konec TIME,
+     kodFitka INT(5)
+     );
+
+
+INSERT INTO lekce (nazev, datum, zacatek, konec, kodFitka)
+VALUES ("joga", "2020-09-13", "16:00", "17:00", 1);
+
+INSERT INTO lekce (nazev, datum, zacatek, konec, kodFitka)
+VALUES ("joga", "2020-09-13", "12:00", "13:00", 2);
+
+INSERT INTO lekce (nazev, datum, zacatek, konec, kodFitka)
+VALUES ("joga", "2020-09-13", "15:00", "16:00", 3);
+
+INSERT INTO lekce (nazev, datum, zacatek, konec, kodFitka)
+VALUES ("joga", "2020-09-13", "16:00", "17:00", 1);
+
+INSERT INTO lekce (nazev, datum, zacatek, konec, kodFitka)
+VALUES ("joga", "2020-09-13", "16:00", "17:00", 2);
