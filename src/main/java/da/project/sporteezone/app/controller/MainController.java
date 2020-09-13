@@ -31,7 +31,7 @@ public class MainController {
     public ModelAndView showMessage() {
         ModelAndView dataHolder = new ModelAndView("index");
         dataHolder.addObject("msg", "hlásí se aplikace Sporteezone");
-        dataHolder.addObject("fitko", fitnessRepository.findByName("Myfit"));
+        dataHolder.addObject("fitko", fitnessRepository.findByNazev("Myfit"));
         return dataHolder;
     }
 
@@ -44,7 +44,7 @@ public class MainController {
         // @RequestParam means it is a parameter from the GET or POST request
 
         System.out.println("jsem tady");
-        System.out.println(noveFitko);
+        System.out.println(noveFitko.getNazev());
 
         fitnessRepository.saveAndFlush(noveFitko);
         return noveFitko;
