@@ -43,12 +43,18 @@ public class MainController {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-        System.out.println("jsem tady");
         System.out.println(noveFitko.getNazev());
 
         fitnessRepository.saveAndFlush(noveFitko);
         return noveFitko;
     }
+
+    @GetMapping( path..... )
+    public @ResponseBody
+
+    return \lekncefhk
+
+
 
 
     @GetMapping(path = "/api/v1/greeting")

@@ -38,3 +38,5 @@ VALUES ("joga", "2020-09-13", "16:00", "17:00", 1);
 
 INSERT INTO lekce (nazev, datum, zacatek, konec, kodFitka)
 VALUES ("joga", "2020-09-13", "16:00", "17:00", 2);
+
+
