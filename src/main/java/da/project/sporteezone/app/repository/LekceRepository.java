@@ -5,17 +5,20 @@ import da.project.sporteezone.app.entity.Lekce;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.sql.SQLOutput;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface LekceRepository extends JpaRepository <Lekce, Integer>{
 
-    @Query("FROM Lekce WHERE nazev = ?1")
-    List<Lekce> findByName(String nazev);
+    List<Lekce> findAllByZacatekBetween(Date zacatek, Date konec);
 
-//    @Query("SELECT a FROM Fitness a WHERE firstName = ?1 AND lastName = ?2")
-//    List<Fitness> findByFirstNameAndLastName(String firstName, String lastName);
+    //@Query("FROM Lekce WHERE datum = ?1")
+    //public List<Lekce> findByDatum(Date date);
 
+    //List<Lekce> findAllByDatum(Date datum);
 
-
+    //List<Lekce> findAllByZacatekBetween(Date timeStart, Date timeEnd);
 
 }
