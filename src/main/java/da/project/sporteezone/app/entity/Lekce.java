@@ -2,6 +2,7 @@ package da.project.sporteezone.app.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Date;
 
