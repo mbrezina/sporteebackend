@@ -2,6 +2,7 @@ package da.project.sporteezone.app.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -14,12 +15,8 @@ public class Lekce {
     private String nazev;
     private String url;
 
-    // Mám používat timestamp?  Protože použití .TIME mi smaže datum.
-    @Temporal(TemporalType.TIME)
-    private Date zacatek;
-
-    @Temporal(TemporalType.TIME)
-    private Date konec;
+    private LocalDateTime zacatek;
+    private LocalDateTime konec;
 
     private Integer kapacita;
     private Boolean nutnostRezervace;
@@ -58,11 +55,11 @@ public class Lekce {
         this.url = url;
     }
 
-    public void setZacatek(Date zacatek) {
+    public void setZacatek(LocalDateTime zacatek) {
         this.zacatek = zacatek;
     }
 
-    public void setKonec(Date konec) {
+    public void setKonec(LocalDateTime konec) {
         this.konec = konec;
     }
 
@@ -98,11 +95,11 @@ public class Lekce {
         return url;
     }
 
-    public Date getZacatek() {
+    public LocalDateTime getZacatek() {
         return zacatek;
     }
 
-    public Date getTimeEnd() {
+    public LocalDateTime getTimeEnd() {
         return konec;
     }
 
@@ -126,7 +123,7 @@ public class Lekce {
         return kodLektor;
     }
 
-    public Lekce(Integer id, String nazev, String url, Date zacatek, Date konec, Integer kapacita, Boolean nutnostRezervace, Integer cena, Integer kodFitko, Integer kodLektor) {
+    public Lekce(Integer id, String nazev, String url, LocalDateTime zacatek, LocalDateTime konec, Integer kapacita, Boolean nutnostRezervace, Integer cena, Integer kodFitko, Integer kodLektor) {
         this.id = id;
         this.nazev = nazev;
         this.url = url;
