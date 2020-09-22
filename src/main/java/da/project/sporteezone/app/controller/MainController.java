@@ -4,6 +4,8 @@ import da.project.sporteezone.app.entity.Fitness;
 import da.project.sporteezone.app.entity.Lekce;
 import da.project.sporteezone.app.repository.FitnessRepository;
 import da.project.sporteezone.app.repository.LekceRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,12 @@ import java.util.Optional;
 
 
 @RestController
+// v pripade ze pouzijes lombok stak se da logger definovat anotaci
+//@Slf4j
 public class MainController {
+
+    private static final Logger log = LoggerFactory.getLogger(MainController.class);
+
     @Autowired
     private FitnessRepository fitnessRepository;
     @Autowired
@@ -38,7 +45,7 @@ public class MainController {
     List<Lekce> findLekceByDateTime(@RequestParam("zacatek") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date zacatek,
                                     @RequestParam("konec") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date konec) {
 
-        System.out.println("datum je " + zacatek);
+        log.debug("datum je {}", zacatek);
         return lekceRepository.findAllByZacatekBetween(zacatek, konec);
     }
 
@@ -64,7 +71,7 @@ public class MainController {
     public @ResponseBody
     Fitness addNewFitness(@RequestBody Fitness noveFitness) {
 
-        System.out.println(noveFitness.getNazev());
+        log.debug("noveFitness.getNazev()");
         fitnessRepository.saveAndFlush(noveFitness);
         return noveFitness;
     }
