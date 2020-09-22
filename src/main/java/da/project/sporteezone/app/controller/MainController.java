@@ -26,7 +26,7 @@ public class MainController {
     @Autowired
     private LekceRepository lekceRepository;
 
-    //Lekce:
+    /*//Lekce:
     @GetMapping(path = "/api/v1/lekce/all")
     public @ResponseBody
     List<Lekce> getAllLekce() {
@@ -76,5 +76,7 @@ public class MainController {
         return "hello world";
     }
 
+
+     */
 }
 
