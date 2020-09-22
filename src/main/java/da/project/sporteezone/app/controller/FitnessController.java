@@ -33,7 +33,7 @@ public class FitnessController {
     public @ResponseBody
     Fitness addNewFitness(@RequestBody Fitness noveFitness) {
 
-        System.out.println(noveFitness.getNazev());
+        //System.out.println(noveFitness.getNazev());
         fitnessRepository.saveAndFlush(noveFitness);
         return noveFitness;
     }
