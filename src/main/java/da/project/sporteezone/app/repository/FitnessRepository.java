@@ -14,7 +14,5 @@ public interface FitnessRepository extends JpaRepository<Fitness, Integer> {
     @Query("FROM Fitness WHERE nazev = ?1")
     List<Fitness> findByNazev(String nazev);
 
-//    @Query("SELECT a FROM Fitness a WHERE firstName = ?1 AND lastName = ?2")
-//    List<Fitness> findByFirstNameAndLastName(String firstName, String lastName);
 
 }
