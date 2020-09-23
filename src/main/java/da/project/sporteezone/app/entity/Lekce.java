@@ -28,6 +28,5 @@ public class Lekce {
     private Integer kodFitko;
     private Integer kodLektor;
 
-
 }
 

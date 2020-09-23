@@ -1,7 +1,9 @@
 package da.project.sporteezone.app.controller;
 
+import da.project.sporteezone.app.entity.Fitness;
 import da.project.sporteezone.app.entity.Lekce;
 import da.project.sporteezone.app.repository.LekceRepository;
+import da.project.sporteezone.app.service.LekceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,33 +19,40 @@ import java.util.List;
 public class LekceController {
 
     @Autowired
-    private LekceRepository lekceRepository;
+    private LekceService lekceService;
 
     @GetMapping(path = "")
     public @ResponseBody
-    List<Lekce> getAllLekce() {
-        return lekceRepository.findAll();
+    List<Lekce> vsechnyLekce() {
+        return lekceService.zobrazVsechnyLekce();
     }
-
 
     @GetMapping(path = "/byDatum")
     public @ResponseBody
     List<Lekce> findLekceByDateTime(
         @RequestParam("zacatek")
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime zacatek,
-
         @RequestParam("konec")
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime konec) {
-
-        log.info("datum je " + zacatek);
-        log.debug("jsem v debugu");
         log.debug("datum je " + zacatek);
         log.debug(String.valueOf(zacatek.getClass()));
-        return lekceRepository.findAllByZacatekBetween(zacatek, konec);
+        return lekceService.najdiLekce(zacatek, konec);
     }
 
+    @PostMapping(path = "/addOne", consumes = "application/json")
+    public @ResponseBody
+    Lekce pridejJednuLekci(@RequestBody Lekce novaLekce) {
+        lekceService.pridejJednuLekci(novaLekce);
+        return novaLekce;
+    }
 
-    // API call - GET  localhost:8090/api/v1/lekce/byDatum?zacatek=2020-09-13%2015:00&konec=2020-09-13%2017:00
+    @PostMapping(path = "/addMore", consumes = "application/json")
+    public @ResponseBody
+    List<Lekce> pridejVicLekci(@RequestBody List<Lekce> noveLekce) {
+        lekceService.pridejVicLekci(noveLekce);
+        return noveLekce;
+    }
+
 
 }
 
