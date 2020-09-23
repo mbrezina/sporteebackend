@@ -9,11 +9,12 @@ import java.util.List;
 
 @Service
 public class LekceService {
-    LekceRepository lekceRepository;
-
-    public List<Lekce> najdiLekce (Date zacatekLekce, Date konecLekce) {
-        lekceRepository.find
-
-    }
+//    LekceRepository lekceRepository;
+//
+//    public List<Lekce> najdiLekce (Date zacatekLekce, Date konecLekce) {
+//        lekceRepository.find
+//
+//    }
 
 }
+
