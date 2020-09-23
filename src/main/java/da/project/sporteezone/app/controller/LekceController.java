@@ -1,27 +1,14 @@
 package da.project.sporteezone.app.controller;
 
-import da.project.sporteezone.app.entity.Fitness;
 import da.project.sporteezone.app.entity.Lekce;
-import da.project.sporteezone.app.repository.FitnessRepository;
 import da.project.sporteezone.app.repository.LekceRepository;
-import lombok.extern.java.Log;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.slf4j.Log4jLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLOutput;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 
 @Slf4j
@@ -48,9 +35,10 @@ public class LekceController {
         @RequestParam("konec")
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime konec) {
 
-
-        System.out.println("datum je " + zacatek);
-        System.out.println(zacatek.getClass());
+        log.info("datum je " + zacatek);
+        log.debug("jsem v debugu");
+        log.debug("datum je " + zacatek);
+        log.debug(String.valueOf(zacatek.getClass()));
         return lekceRepository.findAllByZacatekBetween(zacatek, konec);
     }
 
