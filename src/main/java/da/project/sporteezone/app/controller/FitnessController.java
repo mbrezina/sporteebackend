@@ -1,8 +1,9 @@
 package da.project.sporteezone.app.controller;
 
 import da.project.sporteezone.app.entity.Fitness;
+import da.project.sporteezone.app.entity.Lekce;
 import da.project.sporteezone.app.repository.FitnessRepository;
-import da.project.sporteezone.app.repository.LekceRepository;
+import da.project.sporteezone.app.service.FitnessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,36 +14,34 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/v1/fitness")
 public class FitnessController {
+
     @Autowired
-    private FitnessRepository fitnessRepository;
+    private FitnessService fitnessService;
 
     @GetMapping(path = "")
     public @ResponseBody
     List<Fitness> getAllFitness() {
-        return fitnessRepository.findAll();
+        return fitnessService.zobrazVsechnyFitness();
     }
 
     @PostMapping(path = "/{id}")
     public @ResponseBody
     Optional<Fitness> getJednoFitko(@PathVariable Integer id) {
-        return fitnessRepository.findById(id);
+        return fitnessService.najdiFitko(id);
     }
 
-
-    @PostMapping(path = "/add", consumes = "application/json")      // Map ONLY POST Requests
+    @PostMapping(path = "/addOne", consumes = "application/json")
     public @ResponseBody
-    Fitness addNewFitness(@RequestBody Fitness noveFitness) {
-
-        //System.out.println(noveFitness.getNazev());
-        fitnessRepository.saveAndFlush(noveFitness);
+    Fitness pridejJednoFitko(@RequestBody Fitness noveFitness) {
+        fitnessService.pridejJednoFitko(noveFitness);
         return noveFitness;
     }
 
-    @GetMapping(path = "/greeting")
+    @PostMapping(path = "/addMore", consumes = "application/json")
     public @ResponseBody
-    String greet() {
-        return "hello world";
+    List<Fitness> pridejVicFitek(@RequestBody List<Fitness> novaFitka) {
+        fitnessService.pridejVicFitek(novaFitka);
+        return novaFitka;
     }
-
 }
 
