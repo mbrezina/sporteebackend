@@ -19,12 +19,8 @@ public class User {
 
     @Column(nullable = false)
     private String password;
-
     private Integer active;
-
     private String roles;
-    private String permissions;
-
 
     public List<String> getRolesList() {
         if (this.roles.length() > 0) {
@@ -32,14 +28,6 @@ public class User {
         }
         return new ArrayList<>();
     }
-
-    public List<String> getPermissionsList() {
-        if (this.permissions.length() > 0) {
-            return Arrays.asList(this.permissions.split(","));
-        }
-        return new ArrayList<>();
-    }
-
 
 
 }

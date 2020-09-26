@@ -20,20 +20,15 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     // deklaruji uživatele s různými rolemi
-    //@Override
-    @Autowired
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.
             inMemoryAuthentication()
             .withUser("user").password(passwordEncoder().encode("password456")).roles("USER")
-
             .and()
-            .withUser("admin").password(passwordEncoder().encode("pass")).roles("USER", "ADMIN")
             //.withUser("admin").password(passwordEncoder().encode("pass")).roles("USER", "ADMIN")
-
-            .and()
-            .withUser("manager").password(passwordEncoder().encode("pass")).roles("MANAGER", "ADMIN").authorities("UPLOAD_API");
+            .withUser("admin").password(passwordEncoder().encode("pass")).roles("USER", "ADMIN");
     }
 
     // Secure the endpoins with HTTP Basic authentication
@@ -44,9 +39,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .httpBasic().and()
             .authorizeRequests()
-            .antMatchers(HttpMethod.POST, "/api/v1").hasRole("ADMIN")
+            .antMatchers(HttpMethod.POST).hasRole("ADMIN")
+            .antMatchers(HttpMethod.GET, "/api/v1/user").hasRole("ADMIN")
             .antMatchers(HttpMethod.GET).permitAll();
-
     }
 
     //pro SpringBoot 2 a vyšší je potřeba password encoder a je třeba ho použít pro zakódování hesel uživatelů
@@ -55,16 +50,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
 
     }
-
-    /**@Bean public UserDetailsService userDetailsService() {
-    //ok for demo
-    User.UserBuilder users = User.withDefaultPasswordEncoder();
-
-    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-    manager.createUser(users.username("user").password("password").roles("USER").build());
-    manager.createUser(users.username("admin").password("password").roles("USER", "ADMIN").build());
-    return manager;
-    }*/
-
 
 }
