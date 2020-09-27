@@ -1,6 +1,7 @@
 package da.project.sporteezone.app.entity;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,11 +24,20 @@ public class User {
     private String roles;
 
     public List<String> getRolesList() {
+
         if (this.roles.length() > 0) {
             return Arrays.asList(this.roles.split(","));
         }
         return new ArrayList<>();
     }
 
+    public User() {
+    }
 
+    public User(String username, String password, Integer active, String roles) {
+        this.username = username;
+        this.password = password;
+        this.active = active;
+        this.roles = roles;
+    }
 }
