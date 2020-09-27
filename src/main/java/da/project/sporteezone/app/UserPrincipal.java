@@ -1,6 +1,7 @@
 package da.project.sporteezone.app;
 
 import da.project.sporteezone.app.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,11 +12,8 @@ import java.util.List;
 
 public class UserPrincipal implements UserDetails {
 
+    @Autowired
     private User user;
-
-    public UserPrincipal(User user) {
-        this.user = user;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
