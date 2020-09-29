@@ -25,5 +25,4 @@ public class Fitness {
     private String pohlavi;
     private Boolean mhd;
 
-
 }
