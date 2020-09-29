@@ -23,16 +23,14 @@ public class UserPrincipalDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-        try {
-            User user = this.userRepository.findByUsername(s);
-            UserPrincipal userPrincipal = new UserPrincipal();
+        User user = this.userRepository.findByUsername(s);
+        if (user != null) {
+            UserPrincipal userPrincipal = new UserPrincipal(user);
             return userPrincipal;
+        } else {
+            log.info("User was not found in the database, no authentication provided");
+            throw new UsernameNotFoundException("User not found in the user database");
         }
-        catch(UsernameNotFoundException e) {
-            log.info("Username does not exist in the database: " + e);
-        }
-        return null;
     }
-
 }
 

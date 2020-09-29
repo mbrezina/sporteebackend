@@ -15,6 +15,10 @@ public class UserPrincipal implements UserDetails {
     @Autowired
     private User user;
 
+    public UserPrincipal(User user) {
+        this.user = user;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
@@ -54,6 +58,8 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isEnabled() {
+
         return this.user.getActive() == 1;
+
     }
 }
