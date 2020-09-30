@@ -14,8 +14,11 @@ public class Trener {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name="trener_jmeno")
     private String trenerJmeno;
-    private Integer fitkoKod;
+
+    @Column(name="kod_fitko")
+    private Integer kodFitko;
 
     //@ManyToOne(fetch = FetchType.LAZY)
     //@JoinColumn(name="RELEASE_DATE_TYPE_ID", nullable=true)
@@ -23,5 +26,5 @@ public class Trener {
     //@OneToMany(mappedBy = "lektor")
     //@JoinColumn(name="kodLektora", nullable=true)
     //private List<Lekce> seznamLekci;
-
 }
+

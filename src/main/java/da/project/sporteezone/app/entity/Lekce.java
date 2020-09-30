@@ -22,10 +22,16 @@ public class Lekce {
     private Integer kapacita;
     private Boolean nutnostRezervace;
     private Integer cena;
+
+    @Column(name="kod_fitko")
     private Integer kodFitko;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Trener lektor;
+    @Column(name="kod_trener")
+    private Integer kodTrener;
+
+
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //private Trener lektor;
 
 }
 
