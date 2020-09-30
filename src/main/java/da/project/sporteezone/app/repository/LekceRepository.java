@@ -21,17 +21,4 @@ public interface LekceRepository extends JpaRepository <Lekce, Integer> {
 
     List<Lekce> findAllByZacatekBetween(LocalDateTime zacatek, LocalDateTime konec);
 
-
-    //creates extra columns
-    //@Query("FROM Lekce AS l LEFT JOIN Trener AS t WHERE t.id = ?1")
-    //List<Lekce> findLekceByTrenerId(Integer idLektora);
-
-
-        //@Query("FROM Lekce WHERE datum = ?1")
-    //public List<Lekce> findByDatum(Date date);
-
-    //List<Lekce> findAllByDatum(Date datum);
-
-    //List<Lekce> findAllByZacatekBetween(Date timeStart, Date timeEnd);
-
 }
