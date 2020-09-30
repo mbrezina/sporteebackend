@@ -1,8 +1,8 @@
 package da.project.sporteezone.app.controller;
 
-import da.project.sporteezone.app.entity.Fitness;
 import da.project.sporteezone.app.entity.Lekce;
 import da.project.sporteezone.app.repository.LekceRepository;
+import da.project.sporteezone.app.repository.TrenerRepository;
 import da.project.sporteezone.app.service.LekceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,12 @@ public class LekceController {
 
     @Autowired
     private LekceService lekceService;
+
+    @Autowired
+    private LekceRepository lekceRepository;
+
+    @Autowired
+    private TrenerRepository lektorRepository;
 
     @GetMapping(path = "")
     public @ResponseBody
@@ -52,7 +58,6 @@ public class LekceController {
         lekceService.pridejVicLekci(noveLekce);
         return noveLekce;
     }
-
 
 }
 

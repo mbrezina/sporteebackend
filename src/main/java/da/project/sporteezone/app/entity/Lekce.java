@@ -1,12 +1,10 @@
 package da.project.sporteezone.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 
 @Entity
@@ -25,8 +23,14 @@ public class Lekce {
     private Integer kapacita;
     private Boolean nutnostRezervace;
     private Integer cena;
+
+    @Column(name="kod_fitko")
     private Integer kodFitko;
-    private Integer kodLektor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="kod_trener")
+    @JsonIgnore
+    private Trener trener;
 
 }
 
