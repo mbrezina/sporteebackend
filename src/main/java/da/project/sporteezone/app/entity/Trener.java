@@ -1,6 +1,8 @@
 package da.project.sporteezone.app.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,11 +22,9 @@ public class Trener {
     @Column(name="kod_fitko")
     private Integer kodFitko;
 
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name="RELEASE_DATE_TYPE_ID", nullable=true)
 
-    //@OneToMany(mappedBy = "lektor")
-    //@JoinColumn(name="kodLektora", nullable=true)
-    //private List<Lekce> seznamLekci;
+    @OneToMany(mappedBy = "trener", fetch = FetchType.LAZY)
+    private List<Lekce> seznamLekci;
+
 }
 

@@ -12,8 +12,8 @@ CREATE DATABASE Sporteezone
 
 USE Sporteezone;
 
-DROP table lekce;
 
+DROP table lekce;
 
 CREATE TABLE lekce
      (id INT PRIMARY KEY AUTO_INCREMENT,
@@ -22,7 +22,7 @@ CREATE TABLE lekce
      zacatek DATETIME,
      konec DATETIME,
      kapacita INT(5),
-     nutnost_rezervace BIT,
+     nutnost_rezervace BOOLEAN,
      cena INT,
      kod_fitko INT(5),
      kod_trener INT(5)

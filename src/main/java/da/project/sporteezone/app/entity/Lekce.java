@@ -1,5 +1,6 @@
 package da.project.sporteezone.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,12 +27,10 @@ public class Lekce {
     @Column(name="kod_fitko")
     private Integer kodFitko;
 
-    @Column(name="kod_trener")
-    private Integer kodTrener;
-
-
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //private Trener lektor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="kod_trener")
+    @JsonIgnore
+    private Trener trener;
 
 }
 
