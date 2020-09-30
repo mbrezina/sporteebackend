@@ -8,9 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface TrenerRepository extends JpaRepository<Trener, Integer> {
+
 
 
     //@Query("SELECT DISTINCT lekce FROM Lekce lekce LEFT JOIN lekce.lektor lektor WHERE lektor.id = ?1")

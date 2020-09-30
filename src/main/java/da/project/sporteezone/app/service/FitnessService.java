@@ -1,6 +1,7 @@
 package da.project.sporteezone.app.service;
 
 import da.project.sporteezone.app.entity.Fitness;
+import da.project.sporteezone.app.entity.Trener;
 import da.project.sporteezone.app.repository.FitnessRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,7 @@ public class FitnessService {
     public Optional<Fitness> najdiFitko(Integer id) {
         return fitnessRepository.findById(id);
     }
+
+
 }
 

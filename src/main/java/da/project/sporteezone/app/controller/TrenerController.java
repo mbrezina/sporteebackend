@@ -6,6 +6,7 @@ import da.project.sporteezone.app.entity.Lekce;
 import da.project.sporteezone.app.entity.Trener;
 import da.project.sporteezone.app.repository.TrenerRepository;
 import da.project.sporteezone.app.service.LekceService;
+import da.project.sporteezone.app.service.TrenerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,20 +18,17 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/v1/trener")
 
-
 public class TrenerController {
 
     @Autowired
-    private TrenerRepository trenerRepository;
-
-
+    private TrenerService trenerService;
 
     @GetMapping(path = "/{id}")
     public @ResponseBody
-    Optional<Trener> najdiLekcePodlelektora(@PathVariable Integer id) {
+    Optional<Trener> najdiTrenera(@PathVariable Integer id) {
         log.info("jsem zde");
-        return trenerRepository.findById(id);
-
+        log.info("id je " + id);
+        return trenerService.najdiTrenera(id);
     }
 
 }
