@@ -29,21 +29,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
-    /*
-
-    // deklaruji uživatele s různými rolemi
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth.
-            inMemoryAuthentication()
-            .withUser("user").password(passwordEncoder().encode("password456")).roles("USER")
-            .and()
-            //.withUser("admin").password(passwordEncoder().encode("pass")).roles("USER", "ADMIN")
-            .withUser("admin").password(passwordEncoder().encode("pass")).roles("USER", "ADMIN");
-    }
-    */
-
     // Secure the endpoins with HTTP Basic authentication
     @Override
     protected void configure(HttpSecurity http) throws Exception {

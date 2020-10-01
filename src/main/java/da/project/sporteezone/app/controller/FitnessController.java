@@ -28,7 +28,6 @@ public class FitnessController {
         return fitnessService.zobrazVsechnyFitness();
     }
 
-    //@PostMapping(path = "/{id}")
     @GetMapping(path = "/{id}")
     public @ResponseBody
     Optional<Fitness> getJednoFitko(@PathVariable Integer id) {
