@@ -29,6 +29,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
     // Secure the endpoins with HTTP Basic authentication
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,7 +54,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers(HttpMethod.POST).hasRole("ADMIN")
             .antMatchers(HttpMethod.GET, "/api/v1/user").hasRole("ADMIN")
             .antMatchers(HttpMethod.GET).permitAll();
-    }
+    } */
+
 
     @Override
     public UserDetailsService userDetailsServiceBean() throws Exception {
