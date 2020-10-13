@@ -11,9 +11,9 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.RequestToViewNameTranslator;
 import org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator;
-
 @SpringBootApplication
 public class Main extends SpringBootServletInitializer {
 

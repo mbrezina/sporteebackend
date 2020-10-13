@@ -28,21 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
-
     
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
     // Secure the endpoins with HTTP Basic authentication
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -51,10 +37,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .httpBasic().and()
             .authorizeRequests()
+
             .antMatchers(HttpMethod.POST).hasRole("ADMIN")
             .antMatchers(HttpMethod.GET, "/api/v1/user").hasRole("ADMIN")
+
+            .antMatchers("/static/**", "/").permitAll()
+            .antMatchers( "/", "/index").permitAll()
             .antMatchers(HttpMethod.GET).permitAll();
-    } */
+    }
 
 
     @Override
