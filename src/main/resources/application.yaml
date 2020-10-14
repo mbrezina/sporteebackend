@@ -4,5 +4,5 @@ spring:
             client:
                 registration:
                     google:
-                        client-id: "${go.id}"
-                        client-secret: "${go.secret}"
+                        client-id: "${google.id}"
+                        client-secret: "${google.secret}"
