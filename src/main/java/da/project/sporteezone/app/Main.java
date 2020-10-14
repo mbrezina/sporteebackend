@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.web.servlet.context.ServletWebServerInitializedEvent;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.web.servlet.RequestToViewNameTranslator;
 import org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator;
 @SpringBootApplication
+@ConfigurationPropertiesScan("da.project.sporteezone.app")
 public class Main extends SpringBootServletInitializer {
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
