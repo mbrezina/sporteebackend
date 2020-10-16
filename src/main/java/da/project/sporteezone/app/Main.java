@@ -15,8 +15,9 @@ import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.RequestToViewNameTranslator;
 import org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator;
+
 @SpringBootApplication
-@ConfigurationPropertiesScan("da.project.sporteezone.app")
+//@ConfigurationPropertiesScan("da.project.sporteezone.app")
 public class Main extends SpringBootServletInitializer {
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
