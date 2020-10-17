@@ -24,7 +24,7 @@ import java.util.Set;
 
 @Configuration
 @EnableWebSecurity
-@Order(1000)
+@Order(1)
 public class OAuth2LoginSecurityConfig
     extends WebSecurityConfigurerAdapter {
 
@@ -38,66 +38,10 @@ public class OAuth2LoginSecurityConfig
         googleUserService.setAccessibleScopes(googleScopes);
 
         http
-            //.antMatchers("/static/**").permitAll()
-            //.antMatchers("/", "/index").permitAll()
-            .authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
+            .authorizeRequests(authorizeRequests -> authorizeRequests.antMatchers("/star").authenticated())
             .oauth2Login(oauthLogin -> oauthLogin
                 .userInfoEndpoint()
                 .oidcUserService(googleUserService));
-
-    }
-
-
-    //pro SpringBoot 2 a vyšší je potřeba password encoder a je třeba ho použít pro zakódování hesel uživatelů
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-
     }
 }
 
-/*
-
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UserPrincipalDetailsService userPrincipalDetailsService;
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(authenticationProvider());
-    }
-    // Secure the endpoins with HTTP Basic authentication
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .csrf().disable()
-            .httpBasic().and()
-            .authorizeRequests()
-
-            .antMatchers(HttpMethod.POST).hasRole("ADMIN")
-            .antMatchers(HttpMethod.GET, "/api/v1/user").hasRole("ADMIN")
-            .antMatchers(HttpMethod.GET, "/secured").hasRole("ADMIN")
-
-
-            .antMatchers("/static/**").permitAll()
-            .antMatchers( "/", "/index").permitAll()
-            .antMatchers(HttpMethod.GET).permitAll();
-    }
-
-
-    @Override
-    public UserDetailsService userDetailsServiceBean() throws Exception {
-        return super.userDetailsServiceBean();
-    }
-
-    @Bean
-    DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        daoAuthenticationProvider.setUserDetailsService(this.userPrincipalDetailsService);
-        return daoAuthenticationProvider;
-    }
-
-
-
-}
-*/

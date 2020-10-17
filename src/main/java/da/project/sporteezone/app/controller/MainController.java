@@ -24,7 +24,7 @@ public class MainController {
 
     //@Autowired
     //private FitnessService fitnessService;
-/*
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView hello() {
         ModelAndView dataHolder = new ModelAndView("index");
@@ -34,12 +34,12 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = "/secured", method = RequestMethod.GET)
+    @RequestMapping(value = "/star", method = RequestMethod.GET)
     public ModelAndView secured() {
-        ModelAndView dataHolder = new ModelAndView("secured");
+        ModelAndView dataHolder = new ModelAndView("star");
         return dataHolder;
     }
-*/
+
 }
 
 
