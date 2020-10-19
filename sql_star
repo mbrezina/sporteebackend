@@ -13,12 +13,12 @@ CREATE DATABASE Sporteezone
 USE Sporteezone;
 
 
-DROP table treneri;
+DROP table star;
 
 CREATE TABLE treneri
      (id INT PRIMARY KEY AUTO_INCREMENT,
-     trener_jmeno VARCHAR(50),
-     kod_fitko INT);
+     star_gmail VARCHAR(50),
+     activities INT);
 
 
 INSERT INTO treneri (trener_jmeno, kod_fitko) VALUES

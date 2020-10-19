@@ -25,7 +25,7 @@ public class MainController {
     //@Autowired
     //private FitnessService fitnessService;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/guest", method = RequestMethod.GET)
     public ModelAndView hello() {
         ModelAndView dataHolder = new ModelAndView("index");
         log.info("jsem zde");
