@@ -49,6 +49,11 @@
         </dependency>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
             <version>${mariadb-java-client.version}</version>
@@ -72,8 +77,6 @@
             <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>

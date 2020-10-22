@@ -1,0 +1,42 @@
+
+spring:
+    profiles:
+        active: dev
+
+    security:
+        oauth2:
+            client:
+                registration:
+                    google:
+                        client-id: 558221545256-2c541g9irt24pcfkt45870r4pdhenctu.apps.googleusercontent.com
+                        client-secret: 77e9IXBDeX3QU-ovy4e-v3b7
+                        redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+                        scope:
+                            - email
+                            - profile
+
+
+---
+spring:
+    profiles: dev
+    datasource:
+        url: jdbc:mysql://localhost:3306/Sporteezone?serverTimezone=UTC
+        username: student
+        password: password
+logging:
+    level:
+        org.springframework.web.client.RestTemplate: DEBUG
+
+server:
+    port: 8090
+---
+spring:
+    profiles: prod
+    datasource:
+        url: jdbc:mysql://___digital___ocean___:3306/Sporteezone?serverTimezone=UTC
+        username: student
+        password: password
+server:
+    port: 8080
+
+
