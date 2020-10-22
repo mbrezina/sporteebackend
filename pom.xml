@@ -14,7 +14,7 @@
     <name>Sporteezone</name>
     <description>Sporteezone DA Projekt</description>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
 
 
