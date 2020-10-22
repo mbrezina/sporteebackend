@@ -1,21 +1,15 @@
 package da.project.sporteezone.app.controller;
 
-import ch.qos.logback.classic.Logger;
-import da.project.sporteezone.app.entity.Fitness;
-import da.project.sporteezone.app.entity.Lekce;
-import da.project.sporteezone.app.repository.FitnessRepository;
-import da.project.sporteezone.app.service.FitnessService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.logging.LoggerConfiguration;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.boot.SpringApplication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
+import java.util.Collections;
+import java.util.Map;
 
 
 @Slf4j
@@ -25,12 +19,20 @@ public class MainController {
     //@Autowired
     //private FitnessService fitnessService;
 
-    @RequestMapping(value = "/guest", method = RequestMethod.GET)
-    public ModelAndView hello() {
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView welcome() {
         ModelAndView dataHolder = new ModelAndView("index");
-        log.info("jsem zde");
+        log.info("jsem ve welcome");
         //dataHolder.addObject("message", "hello World");
         return dataHolder;
+    }
+
+    @GetMapping("/user")
+    public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+        return Collections.singletonMap("name", principal.getAttribute("name"));
+    }
+    public static void main(String[] args) {
+        SpringApplication.run(MainController.class, args);
     }
 
 
@@ -40,6 +42,12 @@ public class MainController {
         return dataHolder;
     }
 
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ModelAndView logout() {
+        ModelAndView dataHolder = new ModelAndView("logout");
+        return dataHolder;
+    }
 }
 
 

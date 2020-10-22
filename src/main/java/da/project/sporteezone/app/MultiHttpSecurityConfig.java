@@ -17,7 +17,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
+import org.springframework.security.oauth2.client.oidc.web.logout.OidcClientInitiatedLogoutSuccessHandler;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
+import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,7 +40,6 @@ public class MultiHttpSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")
                 .and()
                 .httpBasic();
-
         }
 
         @Autowired
@@ -67,10 +70,25 @@ public class MultiHttpSecurityConfig extends WebSecurityConfigurerAdapter {
 
         }
     }
-    
+
     @Order(2)
     @Configuration
     public static class Oauth2WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
+
+/*
+        @Autowired
+        private ClientRegistrationRepository clientRegistrationRepository;
+
+        private LogoutSuccessHandler oidcLogoutSuccessHandler() {
+            OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler =
+                new OidcClientInitiatedLogoutSuccessHandler(
+                    this.clientRegistrationRepository);
+
+            oidcLogoutSuccessHandler.setPostLogoutRedirectUri(
+                URI.create("http://localhost:8081/home"));
+
+            return oidcLogoutSuccessHandler;
+*/
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
@@ -82,11 +100,16 @@ public class MultiHttpSecurityConfig extends WebSecurityConfigurerAdapter {
             googleUserService.setAccessibleScopes(googleScopes);
 
             http
-                .authorizeRequests(authorizeRequests -> authorizeRequests.antMatchers("/star/**").authenticated())
+                .authorizeRequests(authorizeRequests -> authorizeRequests.antMatchers("/star**").authenticated())
                 .oauth2Login(oauthLogin -> oauthLogin
                     .userInfoEndpoint()
                     .oidcUserService(googleUserService))
-                .authorizeRequests().antMatchers("/guest/**", "/logout/**").permitAll();
+
+                .authorizeRequests().antMatchers("/guest", "/logout").permitAll()
+                .and()
+                .logout(l -> l
+                    .logoutSuccessUrl("/").permitAll());
         }
     }
 }
+
